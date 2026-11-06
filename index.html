@@ -239,6 +239,50 @@
   .cta-buttons .btn-secondary { border-color: rgba(255,255,255,0.4); color: var(--white); }
   .cta-buttons .btn-secondary:hover { background: var(--white); color: var(--navy); }
 
+  /* CONTACT FORM */
+  #contact-form { background: var(--grey-soft); }
+  .form-wrap {
+    max-width: 1100px; margin: 0 auto; display: grid;
+    grid-template-columns: 0.85fr 1.15fr; gap: 56px; align-items: start;
+  }
+  .form-side-text { margin-top: 18px; font-size: 15px; line-height: 1.75; color: var(--muted); max-width: 420px; }
+  .form-contact-row {
+    margin-top: 32px; display: flex; align-items: center; gap: 14px;
+    background: var(--white); border: 1px solid var(--grey); border-radius: 10px; padding: 18px 20px;
+  }
+  .form-contact-icon {
+    width: 40px; height: 40px; border-radius: 8px; background: var(--navy); flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .form-contact-icon svg { width: 18px; height: 18px; stroke: var(--white); }
+  .form-contact-row strong { display: block; font-size: 13px; color: var(--navy); }
+  .form-contact-row a { font-size: 14px; color: var(--blue); font-weight: 600; text-decoration: none; }
+  .form-contact-row a:hover { text-decoration: underline; }
+
+  .form-card {
+    background: var(--white); border: 1px solid var(--grey); border-radius: 14px;
+    padding: 36px; box-shadow: 0 20px 50px rgba(8,13,80,0.06);
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .form-field { margin-bottom: 18px; }
+  .form-field label {
+    display: block; font-size: 12.5px; font-weight: 700; color: var(--navy);
+    margin-bottom: 7px; letter-spacing: 0.2px;
+  }
+  .form-field input, .form-field select, .form-field textarea {
+    width: 100%; padding: 12px 14px; border: 1.5px solid var(--grey); border-radius: 6px;
+    font-family: 'Montserrat', sans-serif; font-size: 14px; color: var(--black);
+    background: var(--grey-soft); transition: border-color 0.2s, background 0.2s;
+  }
+  .form-field input:focus, .form-field select:focus, .form-field textarea:focus {
+    outline: none; border-color: var(--blue); background: var(--white);
+  }
+  .form-field textarea { resize: vertical; }
+  .form-submit { width: 100%; justify-content: center; margin-top: 4px; cursor: pointer; border: none; }
+  .form-status { margin-top: 14px; font-size: 13.5px; font-weight: 600; min-height: 18px; }
+  .form-status.success { color: #1a9d5c; }
+  .form-status.error { color: #d93025; }
+
   /* FOOTER */
   footer {
     background: var(--white); border-top: 1px solid var(--grey); padding: 32px 60px;
@@ -283,6 +327,8 @@
     .about-grid { grid-template-columns: 1fr; gap: 40px; }
     .why-grid, .product-grid { grid-template-columns: repeat(2, 1fr); }
     .industries-grid { grid-template-columns: repeat(2, 1fr); }
+    .form-wrap { grid-template-columns: 1fr; gap: 40px; }
+    .form-side-text { max-width: none; }
   }
 
   /* MOBILE NAV */
@@ -328,6 +374,9 @@
     .about-stats, .why-grid, .product-grid, .industries-grid { grid-template-columns: 1fr; }
     .partner-row { gap: 10px; }
     .cta-buttons { flex-direction: column; }
+    .form-card { padding: 24px; }
+    .form-row { grid-template-columns: 1fr; gap: 0; }
+    .form-contact-row { flex-direction: column; text-align: center; }
     footer { flex-direction: column; text-align: center; padding: 28px 22px; }
   }
 </style>
@@ -545,12 +594,70 @@
     <h2 class="cta-tagline reveal">Need a Reliable<br><span class="accent">Energy Supplier?</span></h2>
     <p class="cta-sub reveal">Tell us what your project needs — batteries, solar, or energy solutions — and we'll get back to you with pricing and availability.</p>
     <div class="cta-buttons reveal">
-      <a href="mailto:contact@improvedenergy.net" class="btn-primary">
+      <a href="#contact-form" class="btn-primary">
         Request a Quote
         <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
       <a href="#products" class="btn-secondary">View Products</a>
     </div>
+  </div>
+</section>
+
+<!-- CONTACT FORM -->
+<section id="contact-form">
+  <div class="form-wrap">
+    <div class="form-side reveal">
+      <div class="section-label">Request a Quote</div>
+      <h2 class="section-title">Let's Talk <span class="accent">Business.</span></h2>
+      <p class="form-side-text">Share a few details about your project and our team will respond with pricing, availability, and next steps.</p>
+      <div class="form-contact-row">
+        <div class="form-contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg></div>
+        <div>
+          <strong>Email us directly</strong>
+          <a href="mailto:info@improvedenergy.net">info@improvedenergy.net</a>
+        </div>
+      </div>
+    </div>
+    <form class="form-card reveal reveal-delay-1" id="leadForm" action="https://formspree.io/f/mnppynzr" method="POST">
+      <div class="form-row">
+        <div class="form-field">
+          <label for="f-name">Full Name *</label>
+          <input type="text" id="f-name" name="name" required>
+        </div>
+        <div class="form-field">
+          <label for="f-email">Email *</label>
+          <input type="email" id="f-email" name="email" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label for="f-company">Company</label>
+          <input type="text" id="f-company" name="company">
+        </div>
+        <div class="form-field">
+          <label for="f-phone">Phone</label>
+          <input type="tel" id="f-phone" name="phone">
+        </div>
+      </div>
+      <div class="form-field">
+        <label for="f-interest">Interested In</label>
+        <select id="f-interest" name="product_interest">
+          <option value="Battery Systems">Battery Systems</option>
+          <option value="Solar & PV Systems">Solar & PV Systems</option>
+          <option value="Oil & Energy Solutions">Oil & Energy Solutions</option>
+          <option value="Not sure yet">Not sure yet</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label for="f-message">Message *</label>
+        <textarea id="f-message" name="message" rows="4" required placeholder="Tell us about your project, quantities, or timeline..."></textarea>
+      </div>
+      <button type="submit" class="btn-primary form-submit">
+        Send Request
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+      <p class="form-status" id="formStatus" role="status"></p>
+    </form>
   </div>
 </section>
 
@@ -686,6 +793,39 @@
     }
     draw();
   }
+
+  // Lead form submission (AJAX to Formspree)
+  const leadForm = document.getElementById('leadForm');
+  const formStatus = document.getElementById('formStatus');
+  leadForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const submitBtn = leadForm.querySelector('.form-submit');
+    submitBtn.disabled = true;
+    formStatus.textContent = 'Sending...';
+    formStatus.className = 'form-status';
+
+    try {
+      const response = await fetch(leadForm.action, {
+        method: 'POST',
+        body: new FormData(leadForm),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (response.ok) {
+        formStatus.textContent = "Thank you — we've received your request and will be in touch shortly.";
+        formStatus.className = 'form-status success';
+        leadForm.reset();
+      } else {
+        const data = await response.json().catch(() => null);
+        formStatus.textContent = (data && data.errors) ? data.errors.map(x => x.message).join(', ') : 'Something went wrong. Please email us directly at info@improvedenergy.net.';
+        formStatus.className = 'form-status error';
+      }
+    } catch (err) {
+      formStatus.textContent = 'Network error. Please email us directly at info@improvedenergy.net.';
+      formStatus.className = 'form-status error';
+    } finally {
+      submitBtn.disabled = false;
+    }
+  });
 </script>
 </body>
 </html>
